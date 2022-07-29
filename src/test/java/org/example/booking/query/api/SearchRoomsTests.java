@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 @DisplayName("cqrs booking")
 @DisplayNameGeneration(ReplaceUnderscoresAndOmitParameterTypes.class)
@@ -27,10 +28,10 @@ public class SearchRoomsTests {
             return null;
         }
     }
-    // Step1: Add a failing acceptance test (Make it fail)
+
     @Test
     public void should_find_no_room_when_searching_an_empty_location_catalog(){
-        assertThat(freeRooms(LocalDate.of(2022,7,28),LocalDate.of(2022,7,31))).describedAs("return free rooms").isEqualTo(null);
+        assertThat(freeRooms(LocalDate.of(2022,7,28),LocalDate.of(2022,7,31))).describedAs("return free rooms").isEqualTo(Collections.emptyList());
     }
 
 
