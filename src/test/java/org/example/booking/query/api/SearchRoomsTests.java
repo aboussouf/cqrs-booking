@@ -25,10 +25,9 @@ public class SearchRoomsTests {
         if((LocalDate.of(2022,8,1)).isBefore(departureDate)) {
             return initialRooms;
         } else {
-            return null;
+            return Collections.emptyList();
         }
     }
-
     @Test
     public void should_find_no_room_when_searching_an_empty_location_catalog(){
         assertThat(freeRooms(LocalDate.of(2022,7,28),LocalDate.of(2022,7,31))).describedAs("return free rooms").isEqualTo(Collections.emptyList());
