@@ -21,18 +21,23 @@ public class SearchRoomsTests {
             new Room("LUNA"),
             new Room("MAGIC")
     );
-    private Collection<Room> freeRooms(LocalDate arrivalDate, LocalDate departureDate) {
-        if((LocalDate.of(2022,8,1)).isBefore(departureDate)) {
-            return initialRooms;
-        } else {
-            return Collections.emptyList();
-        }
-    }
+
     @Test
     public void should_find_no_room_when_searching_an_empty_location_catalog(){
-        assertThat(freeRooms(LocalDate.of(2022,7,28),LocalDate.of(2022,7,31))).describedAs("return free rooms").isEqualTo(Collections.emptyList());
+        ReadRegistry readRegistry = new ReadRegistry(initialRooms);
+        LocalDate arrivalDate = LocalDate.of(2022,7,28);
+        LocalDate departureDate = LocalDate.of(2022,7,31);
+        Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
+        assertThat(rooms).describedAs("return free rooms").isEqualTo(Collections.emptyList());
     }
 
-
+    @Test
+    void should_get_free_rooms_when_finding_rooms_in_location_catalog() {
+        ReadRegistry readRegistry = new ReadRegistry(initialRooms);
+        LocalDate arrivalDate = LocalDate.of(2022, 8, 2);
+        LocalDate departureDate = LocalDate.of(2022, 8, 9);
+        Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
+        assertThat(rooms).describedAs("return free rooms").isEqualTo(initialRooms);
+    }
 
 }
