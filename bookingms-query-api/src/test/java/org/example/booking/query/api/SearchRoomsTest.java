@@ -1,5 +1,6 @@
 package org.example.booking.query.api;
 
+import org.assertj.core.api.Assertions;
 import org.example.booking.ReplaceUnderscoresAndOmitParameterTypes;
 import org.example.booking.dto.Room;
 import org.junit.jupiter.api.DisplayName;
@@ -13,9 +14,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-@DisplayName("cqrs booking")
+@DisplayName("cqrs booking: Show free rooms")
 @DisplayNameGeneration(ReplaceUnderscoresAndOmitParameterTypes.class)
-public class SearchRoomsTests {
+public class SearchRoomsTest {
 
     private final Collection<Room> initialRooms = Arrays.asList(
             new Room("LUNA"),
@@ -28,7 +29,7 @@ public class SearchRoomsTests {
         LocalDate arrivalDate = LocalDate.of(2022,7,28);
         LocalDate departureDate = LocalDate.of(2022,7,31);
         Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
-        assertThat(rooms).describedAs("return free rooms").isEqualTo(Collections.emptyList());
+        Assertions.assertThat(rooms).describedAs("return free rooms").isEqualTo(Collections.emptyList());
     }
 
     @Test
@@ -37,7 +38,7 @@ public class SearchRoomsTests {
         LocalDate arrivalDate = LocalDate.of(2022, 8, 2);
         LocalDate departureDate = LocalDate.of(2022, 8, 9);
         Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
-        assertThat(rooms).describedAs("return free rooms").isEqualTo(initialRooms);
+        Assertions.assertThat(rooms).describedAs("return free rooms").isEqualTo(initialRooms);
     }
 
 }
