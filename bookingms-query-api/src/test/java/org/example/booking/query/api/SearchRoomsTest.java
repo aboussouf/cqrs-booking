@@ -2,7 +2,8 @@ package org.example.booking.query.api;
 
 import org.assertj.core.api.Assertions;
 import org.example.booking.ReplaceUnderscoresAndOmitParameterTypes;
-import org.example.booking.dto.Room;
+
+import org.example.booking.model.Room;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
@@ -19,8 +20,8 @@ import java.util.Collections;
 public class SearchRoomsTest {
 
     private final Collection<Room> initialRooms = Arrays.asList(
-            new Room("LUNA"),
-            new Room("MAGIC")
+            new Room(1,"LUNA",2,200),
+            new Room(2,"MAGIC",1,300)
     );
 
     @Test

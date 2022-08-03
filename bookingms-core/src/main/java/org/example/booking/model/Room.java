@@ -1,17 +1,29 @@
-package org.example.booking.dto;
+package org.example.booking.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="rooms")
 public class Room {
 
+    @Id
+    @Column(name="id")
+    @GeneratedValue
+    private Integer roomId;
+
+    @Column(name="name")
     private String roomName;
 
-    private boolean isFree;
+    @Column(name="capacity")
+    private Integer roomCapacity;
 
-    public Room(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public Room(String roomName, boolean isFree) {
-        this.roomName = roomName;
-        this.isFree = isFree;
-    }
+    @Column(name="price")
+    private Integer roomPrice;
 }

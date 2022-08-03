@@ -1,6 +1,6 @@
 package org.example.booking.query.api;
 
-import org.example.booking.dto.Room;
+import org.example.booking.model.Room;
 
 import java.time.LocalDate;
 import java.util.Collection;
