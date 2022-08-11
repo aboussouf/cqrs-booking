@@ -15,11 +15,11 @@ public class Room {
 
     @Id
     @Column(name="id")
-    @GeneratedValue
+    //@GeneratedValue()
     private Integer roomId;
 
-    @Column(name="name")
-    private String roomName;
+    @Column(name="status")
+    private RoomStatus roomStatus;
 
     @Column(name="capacity")
     private Integer roomCapacity;

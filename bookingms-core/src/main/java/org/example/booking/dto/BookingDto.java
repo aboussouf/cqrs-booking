@@ -2,6 +2,7 @@ package org.example.booking.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.example.booking.model.Booking;
+import org.example.booking.model.RoomStatus;
 
 public class BookingDto {
     private Integer bookingId;
@@ -12,7 +13,7 @@ public class BookingDto {
     private String departureDate;
     private String clientId;
     private Integer roomId;
-    private String roomName;
+    private RoomStatus roomStatus;
     private Integer roomPrice;
 
     public BookingDto(Booking booking) {
@@ -22,7 +23,7 @@ public class BookingDto {
         this.clientId = booking.getClientId();
         if(booking.getRoom() !=null) {
             this.roomId = booking.getRoom().getRoomId();
-            this.roomName = booking.getRoom().getRoomName();
+            this.roomStatus = booking.getRoom().getRoomStatus();
             this.roomPrice = booking.getRoom().getRoomPrice();
         }
     }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.booking.model.Room;
+import org.example.booking.model.RoomStatus;
 
 import javax.persistence.Column;
 
@@ -13,7 +14,7 @@ import javax.persistence.Column;
 public class RoomDto {
     private Integer roomId;
 
-    private String roomName;
+    private RoomStatus roomStatus;
 
     private Integer roomCapacity;
 
@@ -21,7 +22,7 @@ public class RoomDto {
 
     public RoomDto(Room room) {
         this.roomId = room.getRoomId();
-        this.roomName = room.getRoomName();
+        this.roomStatus = room.getRoomStatus();
         this.roomCapacity = room.getRoomCapacity();
         this.roomPrice = room.getRoomPrice();
     }
