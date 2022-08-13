@@ -21,7 +21,7 @@ public class Booking {
     private String arrivalDate;
     private String departureDate;
     private String clientId;
-    private String roomName;
+    private String bookingType;
 
     @ManyToOne
     @JoinColumn(name="room_id")

@@ -21,8 +21,8 @@ import java.util.Collections;
 public class SearchRoomsTest {
 
     private final Collection<Room> initialRooms = Arrays.asList(
-            new Room(1, RoomStatus.EMPTY,2,200),
-            new Room(2,RoomStatus.EMPTY,1,300)
+            new Room(1, RoomStatus.EMPTY,2,200, null),
+            new Room(2,RoomStatus.EMPTY,1,300,null)
     );
 
     @Test

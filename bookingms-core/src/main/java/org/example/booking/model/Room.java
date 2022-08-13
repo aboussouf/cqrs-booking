@@ -3,8 +3,10 @@ package org.example.booking.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.booking.dto.BookingDto;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import javax.persistence.*;
 public class Room {
 
     @Id
-    @Column(name="id")
+    @Column(name="room_id")
     //@GeneratedValue()
     private Integer roomId;
 
@@ -26,4 +28,8 @@ public class Room {
 
     @Column(name="price")
     private Integer roomPrice;
+
+    @OneToMany
+    @Column(name="bookings")
+    private Set<Booking> bookings;
 }
