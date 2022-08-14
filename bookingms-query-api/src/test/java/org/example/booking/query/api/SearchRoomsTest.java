@@ -1,15 +1,13 @@
 package org.example.booking.query.api;
 
 import org.assertj.core.api.Assertions;
-import org.example.booking.ReplaceUnderscoresAndOmitParameterTypes;
 
-import org.example.booking.model.Room;
-import org.example.booking.model.RoomStatus;
+import org.example.booking.query.api.model.Room;
+import org.example.booking.query.api.model.RoomStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -27,19 +25,19 @@ public class SearchRoomsTest {
 
     @Test
     public void should_find_no_room_when_searching_an_empty_location_catalog(){
-        ReadRegistry readRegistry = new ReadRegistry(initialRooms);
+        RoomReadRegistry roomReadRegistry = new RoomReadRegistry(initialRooms);
         LocalDate arrivalDate = LocalDate.of(2022,7,28);
         LocalDate departureDate = LocalDate.of(2022,7,31);
-        Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
+        Collection<Room> rooms = roomReadRegistry.freeRooms(arrivalDate, departureDate);
         Assertions.assertThat(rooms).describedAs("return free rooms").isEqualTo(Collections.emptyList());
     }
 
     @Test
     void should_get_free_rooms_when_finding_rooms_in_location_catalog() {
-        ReadRegistry readRegistry = new ReadRegistry(initialRooms);
+        RoomReadRegistry roomReadRegistry = new RoomReadRegistry(initialRooms);
         LocalDate arrivalDate = LocalDate.of(2022, 8, 2);
         LocalDate departureDate = LocalDate.of(2022, 8, 9);
-        Collection<Room> rooms = readRegistry.freeRooms(arrivalDate, departureDate);
+        Collection<Room> rooms = roomReadRegistry.freeRooms(arrivalDate, departureDate);
         Assertions.assertThat(rooms).describedAs("return free rooms").isEqualTo(initialRooms);
     }
 
